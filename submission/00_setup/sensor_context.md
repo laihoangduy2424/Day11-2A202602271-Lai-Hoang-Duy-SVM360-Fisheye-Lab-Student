@@ -1,6 +1,7 @@
 # Sensor context
 
-- TODO — Rig: mô tả ngắn xe/camera gắn ở đâu theo hiểu biết của bạn từ ảnh (ADASIND không kèm tài liệu rig chi
-  tiết, ghi theo quan sát).
-- TODO — `ego_body` nhìn thấy ở đâu trong frame (góc capo, gương, tay lái...).
-- TODO — Vòng kính (lens circle) nằm ở vị trí nào trong ảnh, chiếm khoảng bao nhiêu phần khung hình.
+- **Rig:** Quan sát ba ảnh `adasind_062370.jpg`, `adasind_117120.jpg` và `adasind_006840.jpg`, camera fisheye nhìn ra đường với góc nhìn rộng, các đường thẳng bị cong rõ ở rìa ảnh. Hai ảnh đầu cho thấy một phần người điều khiển và xe hai bánh ở sát phía trái tiền cảnh, gợi ý camera được đặt gần người điều khiển trên phương tiện. Không đủ thông tin để xác định chính xác điểm gắn, chiều cao, góc lắp hoặc thông số calibration. Các ảnh này không cung cấp một bộ bốn camera SVM đồng bộ.
+
+- **`ego_body`:** Trong `adasind_062370.jpg`, vùng sát mép trái và góc dưới trái có một phần tay lái, thân xe và người điều khiển ở rất gần camera. Trong `adasind_117120.jpg`, cụm đầu xe/tay lái và phần thân xe hiện rõ hơn ở phía dưới bên trái, cạnh tay và thân người điều khiển. Cần phân biệt phần xe ego với người điều khiển và các phương tiện khác trên đường khi xác định ranh giới ignore theo guideline. Với `adasind_006840.jpg`, theo quy định của lab không có ego body nhìn thấy cần gán; không thêm polygon `ego_body`. Bóng đổ trên mặt đường và viền tối ngoài vòng kính không được coi là thân xe ego.
+
+- **Vòng kính (lens circle):** Cả ba ảnh có vùng ảnh hữu ích nằm gần giữa khung, với biên cong rõ ở phía trên và phía dưới. Vùng này trải gần hết chiều ngang ở đoạn giữa và chiếm phần lớn khung hình; ước lượng bằng mắt khoảng ba phần tư đến bốn phần năm diện tích ảnh, không phải số đo calibration. Hai bên vòng kính bị khung ảnh cắt, nên không thấy một đường tròn khép kín hoàn toàn. Vùng tối ngoài vòng kính tập trung ở phía trên, phía dưới và các góc; biên vòng kính có vị trí hơi khác nhau giữa các ảnh nên cần soát `lens_border` riêng từng frame. Các ô làm mờ khuôn mặt/biển số nằm bên trong cảnh không phải vùng ngoài vòng kính.

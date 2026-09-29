@@ -1,9 +1,9 @@
 camera_id,slice_type,frames,risk,rationale
-front,normal,,TODO,TODO
-front,hard,,TODO,TODO
-rear,normal,,TODO,TODO
-rear,hard,,TODO,TODO
-left,normal,,TODO,TODO
-left,hard,,TODO,TODO
-right,normal,,TODO,TODO
-right,hard,,TODO,TODO
+front,normal,20,"Bỏ sót hoặc nhầm lớp đối tượng trong điều kiện quan sát thông thường","Giữ mẫu nền cho camera trước; chọn đa dạng cảnh và khoảng cách; tránh lấy nhiều frame gần trùng nhau"
+front,hard,30,"Đối tượng nhỏ ở xa; ngược sáng; che khuất; biến dạng hoặc cắt biên","Ưu tiên kiểm tra ngưỡng kích thước; phần nhìn thấy; thuộc tính occluded và truncated trong các ca khó dự kiến"
+rear,normal,20,"Sai box hoặc bỏ sót đối tượng phía sau trong cảnh thông thường","Giữ độ phủ riêng cho camera sau; chọn nhiều bối cảnh thay vì suy rộng kết quả từ camera trước"
+rear,hard,30,"Vật cản gần; che khuất; thiếu sáng; đối tượng sát rìa ảnh","Tập trung các ca khó dự kiến khi quan sát phía sau; kiểm tra hình học và ranh giới vùng hợp lệ"
+left,normal,20,"Nhầm lớp hoặc sai box ở góc nhìn ngang","Bổ sung mẫu nền cho phía trái; bao phủ các khoảng cách và vị trí khác nhau trong ảnh"
+left,hard,30,"Đối tượng gần bị méo mạnh; cắt biên; che khuất; nằm trong vùng chồng lấn camera","Kiểm tra box theo phần nhìn thấy và chính sách xử lý đối tượng gần seam; không tự suy đoán liên kết xuyên camera"
+right,normal,20,"Bỏ sót hoặc sai box ở góc nhìn ngang phía phải","Giữ độ phủ riêng cho phía phải; không mặc định camera phải có chất lượng và phân bố giống camera trái"
+right,hard,30,"Đối tượng gần bị méo mạnh; che khuất bởi xe; cắt biên; nằm trong vùng chồng lấn camera","Ưu tiên tình huống khó của camera phải; kiểm tra nhãn và bằng chứng trước khi liên kết xuyên camera"
