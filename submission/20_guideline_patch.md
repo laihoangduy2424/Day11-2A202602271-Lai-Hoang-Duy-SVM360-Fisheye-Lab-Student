@@ -1,7 +1,7 @@
 # Guideline patch
 
-- **Rule mới đề xuất:** TODO
-- **Áp dụng cho:** TODO (class/attribute/zone/ignore_region liên quan)
-- **Vì sao luật hiện tại (`docs/02-rules-vi.md`) không đủ:** TODO
-- **`rules_version` mới:** TODO (ví dụ v1.0.0 → v1.1.0)
-- **Hiệu lực từ:** TODO (round nào bắt đầu áp dụng)
+- **Rule mới đề xuất:** Bổ sung R06a về vùng làm mờ một phần đối tượng. Khi chỉ một phần phương tiện hoặc người bị làm mờ nhưng class và phạm vi phần nhìn thấy vẫn xác định được, tiếp tục gán nhãn theo R01–R04, không tự bỏ toàn bộ đối tượng. Chỉ dùng unreadable khi mức mờ/che khiến không thể xác định nhãn đáng tin cậy. privacy_or_policy chỉ áp dụng khi có yêu cầu chính sách được xác nhận; không suy lý do làm mờ chỉ từ hình ảnh. Nếu việc vẽ ignore có thể làm box rơi vào điều kiện R09, phải chuyển phân xử trước khi áp dụng.
+- **Áp dụng cho:** Sáu class object, ignore_region.reason, các vùng làm mờ một phần trên ảnh fisheye gốc; áp dụng ở mọi zone và không thay đổi ngưỡng H=40.
+- **Vì sao luật hiện tại chưa đủ:** R06 liệt kê unreadable và privacy_or_policy nhưng chưa nói rõ cách xử lý một vùng mờ chỉ phủ một phần đối tượng vẫn nhận diện được. Nếu mỗi người tự xử lý, cùng một xe có thể được giữ box, bỏ box hoặc bị loại khỏi phép so sánh do ignore. Ca được ghi trong decision log D07 ở adasind_062370.jpg và adasind_117120.jpg cần xác nhận phạm vi áp dụng bằng ảnh.
+- **rules_version mới:** Đề xuất v1.0.0 → v1.1.0 sau khi người phụ trách guideline phê duyệt. Các nhãn và findings hiện tại vẫn dùng v1.0.0.
+- **Hiệu lực từ:** Vòng gán nhãn/review tiếp theo sau khi được phê duyệt. Nếu cho phép áp dụng ngay ở rework, cần ghi quyết định, phiên bản và các đối tượng bị ảnh hưởng; không áp dụng hồi tố âm thầm cho bản R1 đã khóa.
